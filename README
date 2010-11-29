@@ -1,0 +1,30 @@
+JsonRpcProvider
+===============
+
+Ext.ux.Direct.JsonRpcProvider is a provider for the Ext.ux.Direct stack to 
+support STANDARD JSON PRC 2.0 (http://groups.google.com/group/json-rpc/web/json-rpc-2-0)
+communications combinded with STANDARD JSON SMD service descriptions 
+(http://groups.google.com/group/json-schema/web/service-mapping-description-proposal).
+
+Installation
+============
+ 
+Include JsonPrcProvider.js in you page source:
+    <script type="text/javascript" src="JsonPrcProvider.js"></script>
+
+Have you SMD included *somehow*:
+    <script type="text/javascript" src="mysmd.json"></script>
+
+Usage
+=====
+    Ext.Direct.addProvider(Ext.apply(Ext.app.JSONRPC_API, {
+        'type'     : 'jsonrpcprovider',
+        'namespace': 'myapp',
+        'url'      : mysmd
+    }));
+
+    // directly call myapp.mycontroller.myprocedure
+    mycb = function() {alert('hallo')};
+    myapp.mycontroller.myprocedure('hello', mycb);
+    
+    // or better use it in directProxys ;-)
